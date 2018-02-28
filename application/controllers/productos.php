@@ -24,20 +24,20 @@ class Productos extends CI_Controller
 			'edit'				=>	FALSE,
 			'delete'			=>	FALSE,		
 			'custom'=>array(	
-				'EDITAR'=>array(
+				'Editar'=>array(
 					'method' => 'editform',
 					'icon'	 => 'fa fa-pencil-square-o fa-lg',					
 					),				
-				'ELIMINAR'=>array(
+				'Eliminar'=>array(
 					'method' => 'delete',
 					'icon'	 => 'fa fa-trash fa-lg',
 					),
 				)		
 			);
-		$data['plural_name'] = 'Productos';
+		$data['plural_name'] = 'Mantenedores / Productos';
 		$data['class_name'] = $this->class_name;
 		$data['table'] = $this->Productos_model->get_productos();
-		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('ID','PRODUCTO','CATEGORÍA','MARCA', 'BODEGA'), $table_options );
+		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('ID','PRODUCTO','CATEGORÍA','U.M.','MARCA', 'BODEGA'), $table_options );
 		$this->Standard_model->render_view($this->view_name.'/index',$data);
 	}
 
@@ -49,12 +49,12 @@ class Productos extends CI_Controller
 					'maxlength'		=>	50,
 					'required'		=>	'TRUE', 
 					'placeholder'	=>	'Max. 50',
-					'label'			=>	'Descripción:'
+					'label'			=>	'*Descripción:'
 				),
 			'idCategoriaInsumo'	=>	array(
 					'type'			=>	'dropdownAutoComplete',
 					'placeholder'	=>	'Seleccione...',
-					'label'			=>	'Categoría de Insumos:',			
+					'label'			=>	'*Categoría de Insumos:',			
 					'required'		=>	TRUE,	
 					'visible_column'=>	'descripcion',
 					'post_name'		=>	'idCategoriaInsumo',				
@@ -63,7 +63,7 @@ class Productos extends CI_Controller
 			'idMarca'	=>	array(
 					'type'			=>	'dropdownAutoComplete',
 					'placeholder'	=>	'Seleccione...',
-					'label'			=>	'Marca',				
+					'label'			=>	'*Marca:',				
 					'visible_column'=>	'descripcion',
 					'post_name'		=>	'idMarca',				
 					'data'			=>	$this->Productos_model->dropdown_marca()
@@ -71,11 +71,20 @@ class Productos extends CI_Controller
 			'idBodega'	=>	array(
 					'type'			=>	'dropdownAutoComplete',
 					'placeholder'	=>	'Seleccione...',
-					'label'			=>	'Bodega',			
+					'label'			=>	'*Bodega:',			
 					'required'		=>	TRUE,	
 					'visible_column'=>	'descripcion',
 					'post_name'		=>	'idBodega',				
 					'data'			=>	$this->Productos_model->dropdown_bodegas()
+				),	
+			'idUnidadMedida'	=>	array(
+					'type'			=>	'dropdownAutoComplete',
+					'placeholder'	=>	'Seleccione...',
+					'label'			=>	'*Unidad de Medida',			
+					'required'		=>	TRUE,	
+					'visible_column'=>	'descripcion',
+					'post_name'		=>	'idUnidadMedida',				
+					'data'			=>	$this->Productos_model->dropdown_unidad_medida()
 				),					
 		);
 		$data['class_name'] = $this->class_name;
@@ -123,6 +132,7 @@ class Productos extends CI_Controller
 					"idCategoriaInsumo"	=> $this->input->post("idCategoriaInsumo"),
 					"idMarca"			=> $this->input->post("idMarca"),
 					"idBodega"			=> $this->input->post("idBodega"),
+					"idUnidadMedida"	=> $this->input->post("idUnidadMedida"),
 				);
 				$this->Standard_model->add_data( 'M_Insumos', $params );
 				$mesagge = array(
@@ -211,7 +221,17 @@ class Productos extends CI_Controller
 					'visible_column'=>	'descripcion',
 					'post_name'		=>	'idBodega',				
 					'data'			=>	$this->Productos_model->dropdown_bodegas()
-				),						
+				),		
+			'idUnidadMedida'	=>	array(
+					'type'			=>	'dropdownAutoComplete',
+					'placeholder'	=>	'Seleccione...',
+					'label'			=>	'*Unidad de Medida',	
+					'selected'		=>	$response->idUnidadMedida,		
+					'required'		=>	TRUE,	
+					'visible_column'=>	'descripcion',
+					'post_name'		=>	'idUnidadMedida',				
+					'data'			=>	$this->Productos_model->dropdown_unidad_medida()
+				),					
 			);
 			$data['class_name'] = $this->class_name;
 			$data['tittle'] = "Editando Producto";
@@ -243,7 +263,8 @@ class Productos extends CI_Controller
 				'descripcion'	=> $this->input->post('descripcion'),
 				'idCategoriaInsumo'	=> $this->input->post('idCategoriaInsumo'),
 				'idMarca'	=> $this->input->post('idMarca'),
-				'idBodega'	=> $this->input->post('idBodega')
+				'idBodega'	=> $this->input->post('idBodega'),
+				'idUnidadMedida'	=> $this->input->post('idUnidadMedida')
 				);
 			$this->Standard_model->update_data('M_Insumos', $conditions, $data);
 			$mesagge = array(

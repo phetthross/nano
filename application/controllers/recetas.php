@@ -26,15 +26,15 @@ class Recetas extends CI_Controller
 			'delete'			=>	FALSE,		
 			'invisible_columns'	=>	array('id'),
 			'custom'=>array(	
-				'DETALLE'=>array(
+				'Detalle'=>array(
 					'method' => 'detalle',
 					'icon'	 => 'fa fa-eye fa-lg',					
 					),
-				'EDITAR'=>array(
+				'Editar'=>array(
 					'method' => 'editform',
 					'icon'	 => 'fa fa-pencil-square-o fa-lg',					
 					),				
-				'ELIMINAR'=>array(
+				'Eliminar'=>array(
 					'method' => 'delete',
 					'icon'	 => 'fa fa-trash fa-lg',
 					),
@@ -201,11 +201,11 @@ class Recetas extends CI_Controller
 			'delete'			=>	FALSE,		
 			'invisible_columns'	=>	array('id'),
 			'custom'=>array(	
-				'EDITAR'=>array(
+				'Editar'=>array(
 					'method' => 'edit_detail',
 					'icon'	 => 'fa fa-pencil-square-o fa-lg',					
 					),				
-				'ELIMINAR'=>array(
+				'Eliminar'=>array(
 					'method' => 'del_detail',
 					'icon'	 => 'fa fa-trash fa-lg',
 					),
@@ -217,7 +217,7 @@ class Recetas extends CI_Controller
 			$data['addform'] = 'air/'.$id;
 			$data['back'] = 'index';
 			$data['table'] = $this->Recetas_model->get_detalle_recetas( $id );
-			$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('INSUMO', 'CANTIDAD'), $table_options );
+			$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('INSUMO', 'U.M.','CANTIDAD'), $table_options );
 			$this->Standard_model->render_view($this->view_name.'/index',$data);
 		}
 		else

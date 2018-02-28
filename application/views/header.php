@@ -55,14 +55,15 @@
              <li class="active">
                 <a href="<?php echo site_url("inicio");?>"><i class="fa fa-diamond"></i> <span class="nav-label">Inicio</span></a>
             </li>
-            <li>
-                <a href="<?php echo site_url("productos");?>"><i class="fa fa-cube"></i> <span class="nav-label">Productos</span></a>
-            </li>
+            
             <li>
                 <a href="<?php echo site_url("recetas");?>"><i class="fa fa-cubes"></i> <span class="nav-label">Recetas</span></a>
             </li>
+             <li>
+                <a href="<?php echo site_url("compras");?>"><i class="fa fa-shopping-basket"></i> <span class="nav-label">Comprar</span></a>
+            </li>
             <li>
-                <a href="<?php echo site_url("ventas");?>"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Vetas</span></a>
+                <a href="<?php echo site_url("ventas");?>"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Vender</span></a>
             </li>
             <li>
                 <a href="<?php echo site_url("indicadores");?>"><i class="fa fa-pie-chart"></i> <span class="nav-label">Indicadores</span>  </a>
@@ -74,10 +75,11 @@
             <li class="">
                 <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Mantenedores </span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" style="height: 0px;">
+                    <li><a href="<?php echo site_url("productos");?>">Productos</a></li>
                     <li><a href="<?php echo site_url("tipoproducto"); ?>">Tipos de Producto</a></li>
                     <li><a href="<?php echo site_url("bodegas"); ?>">Bodegas</a></li>
                     <li><a href="<?php echo site_url("marcas"); ?>">Marcas</a></li>
-                   <li><a href="<?php echo site_url("usuarios"); ?>">Usuarios</a></li>
+                    <li><a href="<?php echo site_url("usuarios"); ?>">Usuarios</a></li>
                     <li><a href="graph_rickshaw.html">Perfiles</a></li>
                     <li><a href="graph_chartjs.html">Chart.js</a></li>
                     <li><a href="graph_chartist.html">Chartist</a></li>

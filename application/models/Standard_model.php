@@ -261,16 +261,14 @@ class Standard_model extends CI_Model
 	//	
 	function bootstrapTable ( $data, $columns, $options )
 	{
-
-		$order = "<span class=\"glyphicon glyphicon-sort\" aria-hidden=\"true\"></span></a>";
-		$table = "<div class=\"panbel panel default\">";	
+		$br = CHR(8);
+		$table = "<div class=\"panel panel default\">\n";	
 		if ( array_key_exists('new_page', $options) )
 		{
 			if ( $options['new_page'] == TRUE )
 			{
 				$new_page = " target='_blank' ";
-			}
-			
+			}			
 		}
 		else
 		{
@@ -280,333 +278,136 @@ class Standard_model extends CI_Model
 		{
 			if ( $options['id_table'] != NULL )
 			{
-				$table .= "<div class='table-responsive'><table id=\"".$options['id_table']."\"class=\"table table-striped table-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"line-height:1;\">";	
+				$table .= "\t<div class='table-responsive'>\n\t\t<table id=\"".$options['id_table']."\" class=\"table table-striped table-bordered table-hover\" cellspacing=\"0\" width=\"100%\" style=\"line-height:1;\">\n";	
 			}			
 			else
 			{
-				$table .= "<div class='table-responsive'><table class=\"table table-striped table-bordered table-hover\">";		
+				$table .= "<div class='table-responsive'>\n\t\t<table class=\"table table-striped table-bordered table-hover\">";		
 			}
 		}
 		else
 		{
 			$table .= "<div class='table-responsive'><table class=\"table table-striped table-bordered table-hover\">";
 		}		
-		$table .= "<thead>";	
-		$table .= "<tr>";			
-		$table .= "<th><center>".implode("</center></th><th><center>", array_values($columns))."</center></th>";	
-		
-		if ($options['edit'] == TRUE)
-		{
-				$table .= "<th class='col-xs-1' align='center'>";
-				$table .= "<center>EDITAR</center>";
-				$table .= "</th>";
-		}
-		if ($options['delete'] == TRUE)
-		{
-				$table .= "<th class='col-xs-1' align='center'>";
-				$table .= "<center>ELIMINAR</center>";
-				$table .= "</th>";
-		}
+		$table .= "\t\t\t<thead>";	
+		$table .= "\n\t\t\t\t<tr>";			
+		$table .= "\n\t\t\t\t\t<th>\n\t\t\t\t\t\t<center>".implode("</center>\n\t\t\t\t\t\t</th>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t<center>", array_values($columns))."</center>\n\t\t\t\t\t</th>";		
 		
 
 		if ( array_key_exists('custom', $options) )
 		{
-			
-			foreach ($options['custom'] as $key => $value)
-			{
-				$table .= "<th class='col-xs-1' align='center'>";
-				$table .= "<center>".$key."</center>";
-				$table .= "</th>";				
-			}			
+			$table .= "\n\t\t\t\t\t<th class='col-xs-1' align='center'>";
+			$table .= "\n\t\t\t\t\t\t<center>OPCIONES</center>";				
+			$table .= "\n\t\t\t\t\t</th>";		
 		}	
-		
-		$table .= "</tr>";		
-		$table .= "</thead>";	
-		$table .= "<tbody>";		
+		$hide_options = 0;
+		$table .= "\n\t\t\t\t</tr>";		
+		$table .= "\n\t\t\t</thead>";	
+		$table .= "\n\t\t<tbody>";		
 		foreach ($data as $row) 
 		{
-			$check_tr = 0;
-			if ( array_key_exists('Nulo', $row) )
-			{				
-				if ($row['Nulo'] == 'SI')
-				{
-					$table .= "<tr class = 'danger'>";	
-					$check_tr++;
-				}
-				else
-				{
-					$table .= "<tr>";	
-					$check_tr++;
-				}
-			}
-			else
+			$check_tr = 0;	
+			$check_logic_conditions = 0;	
+			if ( array_key_exists('success-row', $options) )
 			{
-				if ( array_key_exists('estadoMesCierre', $row) )
-				{	
-
-					if ($row['estadoMesCierre'] == 'CERRADO')
-					{							
-						$table .= "<tr class = 'danger'>";		
-						$check_tr++;
-					}
-				}
-				if ( array_key_exists('mesCierre', $options) )
+				$check_logic_conditions++;
+				if ( array_key_exists( 'hide_options', $options['success-row'] ) )
 				{
-
-					if($this->get_mes_cierre() == NULL )
-					{
-						$table .= "<tr class = 'success'>";	
-						$check_tr++;
-					}
-					else if ($this->get_mes_cierre()[0]['id'] > $this->get_id_cierre($row['id']))
-					{
-						$table .= "<tr class = 'warning'>";	
-						$check_tr++;
-					}
-					else
-					{
-						$table .= "<tr class = 'success'>";	
-						$check_tr++;
-					}
+					$hide_options++;
 				}
-				else
+				$row_type			= 'success';
+				$row_operator		= $options['success-row']['operator'];
+				$row_value			= $options['success-row']['value'];
+				$row_column_name	= $options['success-row']['column_name'];
+			}
+			if ( array_key_exists('danger-row', $options) )
+			{	
+				$check_logic_conditions++;
+				if ( array_key_exists( 'hide_options', $options['danger-row'] ) )
 				{
-					if ( array_key_exists('danger-row', $options) )
-					{
-						if ( array_key_exists('operator', $options['danger-row']) )
-						{
-							switch ($options['danger-row']['operator'])
-							{
-								case '=':
-									if ( $row[$options['danger-row']['column_name']] == $options['danger-row']['value'] )
-									{
-										$table .= "<tr class='danger'>";
-										$check_tr++;
-									}	
-								break;
-								
-								case '<':
-									if ( $row[$options['danger-row']['column_name']] < $options['danger-row']['value'] )
-									{
-										$table .= "<tr class='danger'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '>':
-									if ( $row[$options['danger-row']['column_name']] > $options['danger-row']['value'] )
-									{
-										$table .= "<tr class='danger'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '<=':
-									if ( $row[$options['danger-row']['column_name']] <= $options['danger-row']['value'] )
-									{
-										$table .= "<tr class='danger'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '>=':
-									if ( $row[$options['danger-row']['column_name']] >= $options['danger-row']['value'] )
-									{
-										$table .= "<tr class='danger'>";
-										$check_tr++;
-									}	
-								break;
-
-							}							
-						}
-						else
-						{
-							if ( $row[$options['danger-row']['column_name']] == $options['danger-row']['value'] )
-							{
-								$table .= "<tr class='danger'>";
-								$check_tr++;
-							}		
-						}
-											
-					}
-					if ( array_key_exists('success-row', $options) )
-					{
-						if ( array_key_exists('operator', $options['success-row']) )
-						{
-							switch ($options['success-row']['operator'])
-							{
-								case '=':
-									if ( $row[$options['success-row']['column_name']] == $options['success-row']['value'] )
-									{
-										$table .= "<tr class='success'>";
-										$check_tr++;
-									}	
-								break;
-								
-								case '<':
-									if ( $row[$options['success-row']['column_name']] < $options['success-row']['value'] )
-									{
-										$table .= "<tr class='success'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '>':
-									if ( $row[$options['success-row']['column_name']] > $options['success-row']['value'] )
-									{
-										$table .= "<tr class='success'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '<=':
-									if ( $row[$options['success-row']['column_name']] <= $options['success-row']['value'] )
-									{
-										$table .= "<tr class='success'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '>=':
-									if ( $row[$options['success-row']['column_name']] >= $options['success-row']['value'] )
-									{
-										$table .= "<tr class='success'>";
-										$check_tr++;
-									}	
-								break;
-
-							}							
-						}
-						else
-						{
-							if ( $row[$options['success-row']['column_name']] == $options['success-row']['value'] )
-							{
-								$table .= "<tr class='success'>";
-								$check_tr++;
-							}		
-						}						
-					}
-					if ( array_key_exists('info-row', $options) )
-					{
-						if ( array_key_exists('operator', $options['info-row']) )
-						{
-							switch ($options['info-row']['operator'])
-							{
-								case '=':
-									if ( $row[$options['info-row']['column_name']] == $options['info-row']['value'] )
-									{
-										$table .= "<tr class='info'>";
-										$check_tr++;
-									}	
-								break;
-								
-								case '<':
-									if ( $row[$options['info-row']['column_name']] < $options['info-row']['value'] )
-									{
-										$table .= "<tr class='info'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '>':
-									if ( $row[$options['info-row']['column_name']] > $options['info-row']['value'] )
-									{
-										$table .= "<tr class='info'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '<=':
-									if ( $row[$options['info-row']['column_name']] <= $options['info-row']['value'] )
-									{
-										$table .= "<tr class='info'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '>=':
-									if ( $row[$options['info-row']['column_name']] >= $options['info-row']['value'] )
-									{
-										$table .= "<tr class='info'>";
-										$check_tr++;
-									}	
-								break;
-
-							}							
-						}
-						else
-						{
-							if ( $row[$options['success-row']['column_name']] == $options['success-row']['value'] )
-							{
-								$table .= "<tr class='success'>";
-								$check_tr++;
-							}		
-						}						
-					}
-					if ( array_key_exists('warning-row', $options) )
-					{
-						if ( array_key_exists('operator', $options['warning-row']) )
-						{
-							switch ($options['warning-row']['operator'])
-							{
-								case '=':
-									if ( $row[$options['warning-row']['column_name']] == $options['warning-row']['value'] )
-									{
-										$table .= "<tr class='warning'>";
-										$check_tr++;
-									}	
-								break;
-								
-								case '<':
-									if ( $row[$options['warning-row']['column_name']] < $options['warning-row']['value'] )
-									{
-										$table .= "<tr class='warning'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '>':
-									if ( $row[$options['warning-row']['column_name']] > $options['warning-row']['value'] )
-									{
-										$table .= "<tr class='warning'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '<=':
-									if ( $row[$options['warning-row']['column_name']] <= $options['warning-row']['value'] )
-									{
-										$table .= "<tr class='warning'>";
-										$check_tr++;
-									}	
-								break;
-
-								case '>=':
-									if ( $row[$options['warning-row']['column_name']] >= $options['warning-row']['value'] )
-									{
-										$table .= "<tr class='warning'>";
-										$check_tr++;
-									}	
-								break;
-							}							
-						}
-						else
-						{
-							if ( $row[$options['warning-row']['column_name']] == $options['warning-row']['value'] )
-							{
-								$table .= "<tr class='warning'>";
-								$check_tr++;
-							}		
-						}										
-					}
-					if ( $check_tr == 0 )
-					{
-
-						$table .= "<tr>";	
-					}
-					
+					$hide_options++;
+				}			
+				$row_type			= 'danger';
+				$row_operator		= $options['danger-row']['operator'];
+				$row_value			= $options['danger-row']['value'];
+				$row_column_name	= $options['danger-row']['column_name'];
+			}
+			if ( array_key_exists('warning-row', $options) )
+			{
+				$check_logic_conditions++;
+				if ( array_key_exists( 'hide_options', $options['warning-row'] ) )
+				{
+					$hide_options++;
 				}
-			}			
+				$row_type			= 'warning';
+				$row_operator		= $options['warning-row']['operator'];
+				$row_value			= $options['warning-row']['value'];
+				$row_column_name	= $options['warning-row']['column_name'];
+			}
+			if ( array_key_exists('info-row', $options) )
+			{
+				$check_logic_conditions++;
+				if ( array_key_exists( 'hide_options', $options['info-row'] ) )
+				{
+					$hide_options++;
+				}
+				$row_type			= 'info';
+				$row_operator		= $options['info-row']['operator'];
+				$row_value			= $options['info-row']['value'];
+				$row_column_name	= $options['info-row']['column_name'];
+			}
+			if( $check_logic_conditions != 0 )
+			{
+				switch ($row_operator)
+				{
+					case '=':
+						if ( $row[$row_column_name] == $row_value )
+						{
+							$table .= "\n\t\t\t<tr class='{$row_type}'>";
+							$check_tr++;
+						}	
+					break;							
+					case '<':
+						if ( $row[$row_column_name] < $row_value )
+						{
+							$table .= "\n\t\t\t<tr class='{$row_type}'>";
+							$check_tr++;
+						}	
+					break;
+					case '>':
+						if ( $row[$row_column_name] > $row_value )
+						{
+							$table .= "\n\t\t\t<tr class='{$row_type}'>";
+							$check_tr++;
+						}	
+					break;
+					case '<=':
+						if ( $row[$row_column_name] <= $row_value )
+						{
+							$table .= "\n\t\t\t<tr class='{$row_type}'>";
+							$check_tr++;
+						}	
+					break;
+					case '>=':
+						if ( $row[$row_column_name] >= $row_value )
+						{
+							$table .= "\n\t\t\t<tr class='{$row_type}'>";
+							$check_tr++;
+						}	
+					break;
+				}				
+			}				
+			if ( $check_tr == 0 )
+			{
+				$table .= "<tr>";	
+			}	
+			//limpieza de variables
+			unset($row_type);
+			unset($row_operator);
+			unset($row_value);
+			unset($row_column_name);				
+			
+			
 			if ( array_key_exists('invisible_columns', $options) )
 			{
 				$visible_data = $row;
@@ -622,18 +423,17 @@ class Standard_model extends CI_Model
 				{
 					if( $options['center_data'] == TRUE )
 					{
-						$table .= "<td><center>".implode("</center></td><td><center>", array_values($visible_data))."</center></td>";	
+						$table .= "\n<td><center>".implode("</center></td>\n<td><center>", array_values($visible_data))."</center></td>";	
 					}
 					else
 					{
-						$table .= "<td>".implode("</td><td>", array_values($visible_data))."</td>";	
+						$table .= "\n<td>".implode("</td>\n<td>", array_values($visible_data))."</td>";	
 					}
 				}
 				else
 				{
-					$table .= "<td>".implode("</td><td>", array_values($visible_data))."</td>";	
-				}
-				
+					$table .= "\n\t\t\t\t<td>".implode("</td>\n\t\t\t\t<td>", array_values($visible_data))."</td>";	
+				}				
 			}
 			else
 			{
@@ -641,20 +441,18 @@ class Standard_model extends CI_Model
 				{
 					if( $options['center_data'] == TRUE )
 					{
-						$table .= "<td><center>".implode("</center></td><td><center>", array_values($row))."</center></td>";	
+						$table .= "\n\t\t\t\t<td><center>".implode("</center></td><td><center>", array_values($row))."</center></td>";	
 					}
 					else
 					{
-						$table .= "<td>".implode("</td><td>", array_values($row))."</td>";	
+						$table .= "\n\t\t\t\t<td>".implode("</td><td>", array_values($row))."</td>";	
 					}
 				}
 				else
 				{
-					$table .= "<td>".implode("</td><td>", array_values($row))."</td>";	
+					$table .= "\n\t\t\t\t<td>".implode("</td>\n\t\t\t\t<td>", array_values($row))."</td>";	
 				}				
 			}
-			
-
 			if ( $options['id'] != FALSE )
 			{
 				$id = $options['id'];
@@ -662,232 +460,10 @@ class Standard_model extends CI_Model
 			else
 			{
 				$id = 'id';
-			}
-			
-			if ($options['edit'] == TRUE)
-			{
-				$table .= "<td align='center'>";
-				if ( array_key_exists('estadoMesCierre', $row) )
-				{	
-					if ($row['estadoMesCierre'] != 'CERRADO')
-					{
-						$table .= "<a {$new_page} href='".site_url($options['model'].'/edit/'.$row[$id])."' ><span class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\"></span></a>";
-					}
-				}
-				else
-				{
-					if ( array_key_exists('second_value', $options) )
-					{
-						$allowed = array_values($options['second_value']);						
-						$values = array_filter(
-							$row,
-							function($key) use ($allowed) {
-								return in_array($key, $allowed);
-							},
-							ARRAY_FILTER_USE_KEY
-						);							
-						$table .= "<a {$new_page} href='".site_url($options['model'].'/edit/'.$row[$id].'/'.implode("/", $values))."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>";
-						unset($allowed);
-						unset($values);
-					}
-					else
-					{
-						$table .= "<a {$new_page} href='".site_url($options['model'].'/edit/'.$row[$id])."' ><span class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\"></span></a>";	
-					}
-				
-			
-				}
-					$table .= "</td>";
-			}
-		
-			if ($options['delete'] == TRUE)
-			{
-				$table .= "<td align='center'>";
-				
-				if ( array_key_exists('Nulo', $row) )
-				{	
-					if ($row['Nulo'] == 'NO')
-					{
-						$table .= "<a {$new_page} href='".site_url($options['model'].'/del/'.$row[$id])."' ><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>";
-					}
-				}
-				else
-				{
-					if ( array_key_exists('second_value', $options) )
-					{
-						$allowed = array_values($options['second_value']);						
-						$values = array_filter(
-							$row,
-							function($key) use ($allowed) {
-								return in_array($key, $allowed);
-							},
-							ARRAY_FILTER_USE_KEY
-						);							
-						$table .= "<a {$new_page} href='".site_url($options['model'].'/del/'.$row[$id].'/'.implode("/", $values))."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>";
-						unset($allowed);
-						unset($values);
-					}
-					else
-					{
-						$table .= "<a {$new_page} href='".site_url($options['model'].'/del/'.$row[$id])."' ><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></a>";
-					}
-				}
-				
-				$table .= "</td>";
-			}
-			if ( array_key_exists('aprove', $options) )
-			{
-				if ($options['aprove'] == TRUE)
-				{
-					$table .= "<td align='center'>";
-					$table .= "<a {$new_page} href='".site_url($options['model'].'/aprove/'.$row[$id])."' ><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a>";
-					$table .= "</td>";
-				}
-			}
-			if ( array_key_exists('atomize', $options) )
-			{
-				if ($options['aprove'] == TRUE)
-				{
-					$table .= "<td align='center'>";
-					$table .= "<a {$new_page} href='".site_url($options['model'].'/atomize/'.$row[$id])."' ><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span></a>";
-					$table .= "</td>";
-				}
-			}
-			
-		if ( array_key_exists('void_transaction', $options) )
-			{
-				if ( array_key_exists('mesCierre', $options))
-				{
-					
-					if ($this->get_mes_cierre() == NULL || $this->get_mes_cierre()[0]['id'] <= $this->get_id_cierre($row['id']))
-					{
-						$table .= "<td align='center'>";
-					$table .= "<!-- Modal Anulacion-->
-						<div class=\"modal fade\" id=\"void_transaction".$row[$id]."\"  role=\"dialog\" aria-labelledby=\"myModalLabel\" >
-						  <div class=\"modal-dialog\" role=\"document\">
-						    <div class=\"modal-content\">
-						      <div class=\"modal-header\">
-						        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
-						        <h4 class=\"modal-title\" id=\"myModalLabel\">Anulación de Registro <span class='label label-primary'>".$row[$id]."</span></h3></h4>
-						      </div>
-						      <div class=\"modal-body\" align='justify'>
-						        ".validation_errors()."
-						        ".form_open($options['model'].'/'.$options['void_method'],array("class"=>"form-horizontal")).
-						        	"
-						        	A continuación se realizará la anulación del movimiento. Para completar este proceso es necesario que indique el motivo y las observaciones del caso.
-						        	<br><br>
-						        	<div class='row'>
-									<input type='hidden' name='idMovimiento' id='idMovimiento' value='".$row[$id]."'/>
-						        		<div class='col-xs-4'>
-						        			<b>Motivo:</b>
-						        		</div>
-						        		<div class='col-xs-8'>
-						        		".$options['void_dropdown']."
-						        		</div>
-						        	</div>
-						        	<br>
-						        	<div class='row'>	      		
-						        			
-						        		<div class='col-xs-12'>
-						        		<b>Observaciones:</b>  	
-						        		<em><textarea required='true' style='resize:none; max-width:560px;' placeholder='Max 200 caracteres.' maxlength='200' name=\"observaciones\" cols=\"150\" rows=\"5\" class=\"form-control\" id=\"observaciones\"></textarea></em>
-						        		</div>
-						        	</div>
-
-						        	<br><hr>
-
-
-
-						        	<div class='row'><div class='col-xs-6'><button type=\"button\" class=\"btn btn-primary btn-block\" data-dismiss=\"modal\"> Cerrar</button></div>
-		<div class='col-xs-6'><button type=\"submit\" class=\"btn btn-danger btn-block\"><i class=\"fa fa-floppy-o fa-lg\" aria-hidden=\"true\"></i> Anular</button></div></div>".form_close()."
-
-						      </div>
-						    </div>
-						  </div>
-						</div>";
-
-					$table .= "
-					
-					<span type=\"button\" data-target=\"#void_transaction".$row[$id]."\" data-toggle=\"modal\" class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>
-					";
-					}
-					else
-					{
-						$table .= "<td align='center'></td>";
-					}
-				}
-				else if ($options['void_transaction'] == TRUE )
-				{
-					$table .= "<td align='center'>";
-					$table .= "<!-- Modal Anulacion-->
-						<div class=\"modal fade\" id=\"void_transaction".$row[$id]."\"  role=\"dialog\" aria-labelledby=\"myModalLabel\">
-						  <div class=\"modal-dialog\" role=\"document\">
-						    <div class=\"modal-content\">
-						      <div class=\"modal-header\">
-						        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
-						        <h4 class=\"modal-title\" id=\"myModalLabel\">Anulación de Registro <span class='label label-primary'>".$row[$id]."</span></h3></h4>
-						      </div>
-						      <div class=\"modal-body\" align='justify'>
-						        ".validation_errors()."
-						        ".form_open($options['model'].'/'.$options['void_method'],array("class"=>"form-horizontal")).
-						        	"
-						        	A continuación se realizará la anulación del movimiento. Para completar este proceso es necesario que indique el motivo y las observaciones del caso.
-						        	<br><br>
-						        	<div class='row'>
-									<input type='hidden' name='idMovimiento' id='idMovimiento' value='".$row[$id]."'/>
-						        		<div class='col-xs-4'>
-						        			<b>Motivo:</b>
-						        		</div>
-						        		<div class='col-xs-8'>
-						        		".$options['void_dropdown']."
-						        		</div>
-						        	</div>
-						        	<br>
-						        	<div class='row'>	      		
-						        			
-						        		<div class='col-xs-12'>
-						        		<b>Observaciones:</b>  	
-						        		<em><textarea required='true'style='resize:none; max-width:560px;' placeholder='Max 200 caracteres.' maxlength='200' name=\"observaciones\" cols=\"150\" rows=\"5\" class=\"form-control\" id=\"observaciones\"></textarea></em>
-						        		</div>
-						        	</div>
-
-						        	<br><hr>
-
-
-
-						        	<div class='row'><div class='col-xs-6'><button type=\"button\" class=\"btn btn-primary btn-block\" data-dismiss=\"modal\"> Cerrar</button></div>
-		<div class='col-xs-6'><button type=\"submit\" class=\"btn btn-danger btn-block\"><i class=\"fa fa-floppy-o fa-lg\" aria-hidden=\"true\"></i> Anular</button></div></div>".form_close()."
-
-						      </div>
-						    </div>
-						  </div>
-						</div>";
-
-					$table .= "
-					
-					<span type=\"button\" data-target=\"#void_transaction".$row[$id]."\" data-toggle=\"modal\" class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span>
-					";
-					$table .= "</td>";
-				}
-			}
-			if ( array_key_exists('view_detail', $options) )
-			{
-				if ($options['view_detail'] == TRUE )
-				{
-					$table .= "<td align='center'>";
-					if($this->MovBodega_model->count_detalle_encabezado($row['id']) > 0)
-					{
-						
-						$table .= "<a {$new_page} href='".site_url($options['modelDetail'].'/index/'.$row[$id])."' ><span class=\"glyphicon glyphicon-eye-open\" aria-hidden=\"true\"></span></a>";
-						
-					}
-					$table .= "</td>";
-				}
-			}
-			
-			
+			}								
 			if ( array_key_exists('custom', $options) )
 			{
+				$table .= "\n\t\t\t\t<td align='center'><center>";
 				foreach ($options['custom'] as $key => $value)
 				{
 					//-------------------------------
@@ -957,8 +533,7 @@ class Standard_model extends CI_Model
 							}		
 						}						
 					}
-					//-----------------------------------
-					$table .= "<td align='center'>";
+					//-----------------------------------					
 					if ( array_key_exists('second_value', $options) )
 					{
 						$allowed = array_values($options['second_value']);						
@@ -971,16 +546,16 @@ class Standard_model extends CI_Model
 						);	
 						if (array_key_exists('encode_id', $options))
 						{
-							if ( $visible_option == 0 )
+							if ( ($visible_option == 0 AND $hide_options == 0) OR $check_tr == 0 ) 
 							{
-								$table .= "<a {$new_page} href='".site_url($options['model'].'/'.$value['method'].'/'.$this->encode_id(base64_encode($row[$id])).'/'.implode("/", base64_encode($values)))."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>";
+								$table .= "<a {$new_page} data-toggle=\"popover\" data-trigger=\"hover\" data-content=\"{$key}\" data-placement=\"left\" href='".site_url($options['model'].'/'.$value['method'].'/'.$this->encode_id(base64_encode($row[$id])).'/'.implode("/", base64_encode($values)))."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>&nbsp;&nbsp;";
 							}
 						}
 						else
 						{
-							if ( $visible_option == 0 )
+							if ( ($visible_option == 0 AND $hide_options == 0) OR $check_tr == 0 ) 
 							{
-								$table .= "<a {$new_page} href='".site_url($options['model'].'/'.$value['method'].'/'.$row[$id].'/'.implode("/", $values))."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>";
+								$table .= "<a {$new_page} data-toggle=\"popover\" data-trigger=\"hover\" data-content=\"{$key}\" data-placement=\"left\" href='".site_url($options['model'].'/'.$value['method'].'/'.$row[$id].'/'.implode("/", $values))."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>&nbsp;&nbsp;";
 							}
 						}						
 						
@@ -991,29 +566,32 @@ class Standard_model extends CI_Model
 					{
 						if (array_key_exists('encode_id', $options))
 						{
-							if ( $visible_option == 0 )
+							if ( ($visible_option == 0 AND $hide_options == 0) OR $check_tr == 0 ) 
 							{
-								$table .= "<a {$new_page} href='".site_url($options['model'].'/'.$value['method'].'/'.$this->encode_id(base64_encode($row[$id])))."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>";
+								$table .= "<a {$new_page} data-toggle=\"popover\" data-trigger=\"hover\" data-content=\"{$key}\" data-placement=\"left\" href='".site_url($options['model'].'/'.$value['method'].'/'.$this->encode_id(base64_encode($row[$id])))."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>&nbsp;&nbsp;";
 							}														
 						}
 						else
 						{
-							if ( $visible_option == 0 )
+							if ( ($visible_option == 0 AND $hide_options == 0) OR $check_tr == 0 ) 
 							{
-								$table .= "<a {$new_page} href='".site_url($options['model'].'/'.$value['method'].'/'.$row[$id])."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>";
-							}
-							
-						}
-						
-					}
-					$table .= "</td>";		
-				}				
+								$table .= "<a {$new_page} data-toggle=\"popover\" data-trigger=\"hover\" data-content=\"{$key}\" data-placement=\"left\" href='".site_url($options['model'].'/'.$value['method'].'/'.$row[$id])."' ><span class=\"".$value['icon']."\" aria-hidden=\"true\"></span></a>&nbsp;&nbsp;";
+							}							
+						}						
+					}						
+				}	
+				$table .= "</td>";				
 			}
-			$table .= "</tr>";				 
+			$table .= "\n</center></tr>";				 
 		}			
-		$table .= "</tbody>";	
-		$table .= "</table>";
-		$table .= "</div>";		
+		$table .= "\n</tbody>";	
+		$table .= "\n</table>";
+		$table .= "\n</div>";	
+		$table .= "<script>
+		$(document).ready(function(){
+			$('[data-toggle=\"popover\"]').popover();
+		});
+		</script>";
 		return $table;	
 	}
 	public function encode_id($data)
