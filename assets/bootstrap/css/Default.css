@@ -1,0 +1,1570 @@
+@charset "iso-8859-1";
+
+.Attribute
+{
+	background-color: white;
+	color: black;
+	font-size: 9pt;
+	font-family: Verdana;
+	border-width: 1px;
+	border-style: ridge;
+	ime-mode: auto;
+	font:    9pt Verdana;
+	border-top-color: rgb(176, 196, 222);
+	border-right-color: rgb(176, 196, 222);
+	border-bottom-color: rgb(176, 196, 222);
+	border-left-color: rgb(176, 196, 222);
+	border-color: rgb(176, 196, 222);
+	
+}
+
+.FreeStyleGrid
+{
+	border-width: 0px;
+	border-style: none;
+	
+}
+
+.FreeStyleGridUniform
+{
+	border-width: 0px;
+	background-color: rgb(219, 236, 252);
+	font-size: 9pt;
+	font-family: Verdana;
+	font:    9pt Verdana;
+	
+}
+
+.FreeStyleGridOdd
+{
+	border-width: 0px;
+	background-color: white;
+	font-size: 9pt;
+	font-family: Verdana;
+	font:    9pt Verdana;
+	
+}
+
+.FreeStyleGridEven
+{
+	border-width: 0px;
+	background-color: rgb(219, 236, 252);
+	font-size: 9pt;
+	font-family: Verdana;
+	font:    9pt Verdana;
+	
+}
+
+.Grid
+{
+	border-width: 0px;
+	border-style: none;
+	
+}
+
+.GridUniform
+{
+	border-width: 0px;
+	font-size: 9pt;
+	font-family: Verdana;
+	font:    9pt Verdana;
+	
+}
+
+.GridOdd
+{
+	border-width: 0px;
+	font-size: 9pt;
+	font-family: Verdana;
+	font:    9pt Verdana;
+	
+}
+
+.GridEven
+{
+	border-width: 0px;
+	font-size: 9pt;
+	font-family: Verdana;
+	background-color: rgb(219, 236, 252);
+	font:    9pt Verdana;
+	
+}
+
+.GridUniformTitle
+{
+	color: rgb(31, 76, 135);
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	font:   bold 9pt Verdana;
+	
+}
+
+.GridTitle
+{
+	color: rgb(31, 76, 135);
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	background-color: rgb(176, 196, 222);
+	font:   bold 9pt Verdana;
+	
+}
+
+.Table
+{
+	border-width: 0px;
+	border-style: none;
+	font-size: 9pt;
+	font-family: Verdana;
+	font:    9pt Verdana;
+	
+}
+
+.Image
+{
+	border-width: 0px;
+	border-style: none;
+	
+}
+
+.Button
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	
+}
+
+.Hyperlink
+{
+	border-width: 0px;
+	border-style: none;
+	
+}
+
+.TextBlock
+{
+	border-width: 0px;
+	border-style: none;
+	ime-mode: auto;
+	
+}
+
+.SpecialButtons
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnFirst
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnNext
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: outset;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnPrevious
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: outset;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnLast
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnSelect
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnGet
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	vertical-align: baseline;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnEnter
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: outset;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnCheck
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnCancel
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: outset;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnDelete
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.BtnHelp
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: outset;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.TableGrid
+{
+	background-color: rgb(232, 244, 255);
+	border-width: 1px;
+	border-color: rgb(70, 130, 180);
+	border-style: solid;
+	font-size: 9pt;
+	font-family: Verdana;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:    9pt Verdana;
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+.bullet
+{
+	border-width: 0px;
+	border-style: none;
+	text-indent: 5pt;
+	ime-mode: auto;
+	
+}
+
+.TableTop
+{
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 75px;
+	width: 100%;
+	color: white;
+	font-size: 9pt;
+	font-family: Verdana;
+	vertical-align: middle;
+	margin: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:    9pt Verdana;
+	
+}
+
+.TableContent
+{
+	border-width: 0px;
+	border-style: none;
+	color: black;
+	font-size: 9pt;
+	font-family: Verdana;
+	vertical-align: top;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding: 10pt 10pt 10pt 10pt;
+	padding-top: 10pt;
+	padding-right: 10pt;
+	padding-left: 10pt;
+	padding-bottom: 10pt;
+	font:    9pt Verdana;
+	margin: 0px;
+	
+}
+
+.TableLeftMenu
+{
+	background-color: rgb(219, 236, 252);
+	border-width: 0px;
+	border-style: none;
+	width: 100%;
+	font-size: 8.25pt;
+	font-family: Verdana;
+	text-indent: 15pt;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:    8.25pt Verdana;
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+.TextTable
+{
+	border-width: 0px;
+	border-style: none;
+	font-size: 8.25pt;
+	font-family: Verdana;
+	ime-mode: auto;
+	font:    8.25pt Verdana;
+	
+}
+
+.TBTopMenu
+{
+	border-width: 0px;
+	border-style: none;
+	text-decoration: underline;
+	font-weight: bold;
+	font-size: 8.25pt;
+	font-family: Verdana;
+	background-color: rgb(176, 196, 222);
+	color: blue;
+	text-indent: 3pt;
+	ime-mode: auto;
+	font:   bold 8.25pt Verdana;
+	
+}
+
+.TBLeftMenu
+{
+	border-width: 0px;
+	border-style: none;
+	text-decoration: underline;
+	font-weight: bold;
+	font-size: 8.25pt;
+	font-family: Verdana;
+	background-color: rgb(219, 236, 252);
+	color: blue;
+	ime-mode: auto;
+	font:   bold 8.25pt Verdana;
+	
+}
+
+.Title
+{
+	border-width: 0px;
+	border-style: none;
+	font-weight: bold;
+	font-size: 12pt;
+	color: rgb(70, 130, 180);
+	ime-mode: auto;
+	font-family: Verdana;
+	font:   bold 12pt Verdana;
+	
+}
+
+.WorkWith
+{
+	border-width: 0px;
+	border-style: none;
+	
+}
+
+.WorkWithUniform
+{
+	border-width: 0px;
+	font-size: 9pt;
+	font-family: Verdana;
+	background-color: rgb(219, 236, 252);
+	font:    9pt Verdana;
+	
+}
+
+.WorkWithOdd
+{
+	border-width: 0px;
+	font-size: 9pt;
+	font-family: Verdana;
+	background-color: rgb(219, 236, 252);
+	font:    9pt Verdana;
+	
+}
+
+.WorkWithEven
+{
+	border-width: 0px;
+	font-size: 9pt;
+	font-family: Verdana;
+	background-color: rgb(176, 196, 222);
+	font:    9pt Verdana;
+	
+}
+
+.WorkWithUniformTitle
+{
+	color: white;
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	background-color: rgb(219, 236, 252);
+	font:   bold 9pt Verdana;
+	
+}
+
+.WorkWithTitle
+{
+	color: white;
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	background-color: rgb(70, 130, 180);
+	font:   bold 9pt Verdana;
+	
+}
+
+.ErrorViewer
+{
+	border-width: 0px;
+	border-style: none;
+	color: red;
+	
+}
+
+.SubTitle
+{
+	border-width: 0px;
+	border-style: none;
+	font-weight: bold;
+	font-size: 10pt;
+	font-family: Verdana;
+	color: black;
+	ime-mode: auto;
+	font:   bold 10pt Verdana;
+	
+}
+
+.subBullet
+{
+	border-width: 0px;
+	border-style: none;
+	text-indent: 10pt;
+	ime-mode: auto;
+	
+}
+
+.Table100Width
+{
+	border-width: 0px;
+	border-style: none;
+	width: 100%;
+	font-size: 9pt;
+	font-family: Verdana;
+	vertical-align: top;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:    9pt Verdana;
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+.Table100Wx580H
+{
+	border-width: 0px;
+	border-style: none;
+	height: 580px;
+	width: 100%;
+	font-size: 9pt;
+	font-family: Verdana;
+	vertical-align: top;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:    9pt Verdana;
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+.Form
+{
+	border-width: 0px;
+	border-style: none;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: black;
+	margin: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:    9pt Verdana;
+	padding: 0px;
+	
+}
+
+.Table100W5Padding
+{
+	border-width: 0px;
+	border-style: none;
+	width: 100%;
+	font-size: 9pt;
+	font-family: Verdana;
+	vertical-align: top;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:    9pt Verdana;
+	margin: 0px;
+	
+}
+
+.Table2Padding
+{
+	border-width: 0px;
+	border-style: none;
+	font-size: 9pt;
+	font-family: Verdana;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	padding: 2pt 2pt 2pt 2pt;
+	padding-top: 2pt;
+	padding-right: 2pt;
+	padding-left: 2pt;
+	padding-bottom: 2pt;
+	font:    9pt Verdana;
+	margin: 0px;
+	
+}
+
+.ReadonlyAttribute
+{
+	background-color: white;
+	color: black;
+	font-size: 9pt;
+	font-family: Verdana;
+	border-width: 0px;
+	border-style: ridge;
+	ime-mode: auto;
+	font:    9pt Verdana;
+	border-top-color: rgb(176, 196, 222);
+	border-right-color: rgb(176, 196, 222);
+	border-bottom-color: rgb(176, 196, 222);
+	border-left-color: rgb(176, 196, 222);
+	border-color: rgb(176, 196, 222);
+	
+}
+
+.BtnRefresh
+{
+	font-weight: bold;
+	font-size: 9pt;
+	font-family: Verdana;
+	color: white;
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 23px;
+	vertical-align: bottom;
+	text-indent: 0px;
+	margin-top: 3pt;
+	margin-right: 3pt;
+	margin-left: 3pt;
+	margin-bottom: 0pt;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	padding-bottom: 0px;
+	font:   bold 9pt Verdana;
+	margin: 3pt 3pt 0pt;
+	padding: 0px;
+	
+}
+
+.TableHorizontalLine
+{
+	background-color: black;
+	border-width: 0px;
+	border-style: none;
+	height: 1px;
+	width: 100%;
+	font-size: 1.5pt;
+	font-family: Verdana;
+	font:    1.5pt Verdana;
+	
+}
+
+.TableHorizontalLineBlue
+{
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 1px;
+	width: 100%;
+	font-size: 1.5pt;
+	font-family: Verdana;
+	font:    1.5pt Verdana;
+	
+}
+
+.TableTopMenu
+{
+	background-color: rgb(176, 196, 222);
+	border-width: 0px;
+	border-style: none;
+	font-size: 8.25pt;
+	font-family: Verdana;
+	text-indent: 0px;
+	font:    8.25pt Verdana;
+	
+}
+
+.TableHorizontalLineGray
+{
+	background-color: rgb(211, 211, 211);
+	border-width: 0px;
+	border-style: none;
+	height: 1px;
+	width: 100%;
+	font-size: 1.5pt;
+	font-family: Verdana;
+	font:    1.5pt Verdana;
+	
+}
+
+.TableVerticalLine
+{
+	background-color: black;
+	border-width: 0px;
+	border-style: none;
+	height: 100%;
+	width: 1px;
+	font-size: 1.5pt;
+	font-family: Verdana;
+	font:    1.5pt Verdana;
+	
+}
+
+.TableVerticalLineBlue
+{
+	background-color: rgb(70, 130, 180);
+	border-width: 0px;
+	border-style: none;
+	height: 100%;
+	width: 1px;
+	font-size: 1.5pt;
+	font-family: Verdana;
+	font:    1.5pt Verdana;
+	
+}
+
+.Messages
+{
+	background-color: #FFFFE1;
+	font-size: 7.5pt;
+	color: #000000;
+	border-width: 1px;
+	border-style: solid;
+	font-family: Verdana, Arial;
+	font:    7.5pt Verdana, Arial;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	border-top-color: #716F64;
+	border-right-color: #716F64;
+	border-bottom-color: #716F64;
+	border-left-color: #716F64;
+	border-color: #716F64;
+	
+}
+
+.ErrorMessages
+{
+	background-color: Red;
+	font-size: 7.5pt;
+	color: White;
+	border-width: 1px;
+	border-style: solid;
+	font-family: Verdana, Arial;
+	font:   bold 7.5pt Verdana, Arial;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	border-top-color: #716F64;
+	border-right-color: #716F64;
+	border-bottom-color: #716F64;
+	border-left-color: #716F64;
+	border-color: #716F64;
+	font-weight: bold;
+	
+}
+
+.WarningMessages
+{
+	background-color: Gold;
+	font-size: 7.5pt;
+	color: #404040;
+	border-width: 1px;
+	border-style: solid;
+	font-family: Verdana, Arial;
+	font:   bold 7.5pt Verdana, Arial;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	border-top-color: #716F64;
+	border-right-color: #716F64;
+	border-bottom-color: #716F64;
+	border-left-color: #716F64;
+	border-color: #716F64;
+	font-weight: bold;
+	
+}
+
+.BlobContentAttribute
+{
+	ime-mode: auto;
+	background-color: white;
+	font-family: Verdana;
+	font:    9pt Verdana;
+	color: black;
+	font-size: 9pt;
+	border-top-color: rgb(176, 196, 222);
+	border-right-color: rgb(176, 196, 222);
+	border-bottom-color: rgb(176, 196, 222);
+	border-left-color: rgb(176, 196, 222);
+	border-color: rgb(176, 196, 222);
+	border-width: 1px;
+	border-style: ridge;
+	
+}
+
+.BlobInputAttribute
+{
+	ime-mode: auto;
+	background-color: white;
+	font-family: Verdana;
+	font:    9pt Verdana;
+	color: black;
+	font-size: 9pt;
+	border-top-color: rgb(176, 196, 222);
+	border-right-color: rgb(176, 196, 222);
+	border-bottom-color: rgb(176, 196, 222);
+	border-left-color: rgb(176, 196, 222);
+	border-color: rgb(176, 196, 222);
+	border-width: 1px;
+	border-style: ridge;
+	
+}
+
+.ReadonlyBlobContentAttribute
+{
+	ime-mode: auto;
+	background-color: white;
+	font-family: Verdana;
+	color: black;
+	font-size: 9pt;
+	font:    9pt Verdana;
+	border-top-color: rgb(176, 196, 222);
+	border-right-color: rgb(176, 196, 222);
+	border-bottom-color: rgb(176, 196, 222);
+	border-left-color: rgb(176, 196, 222);
+	border-color: rgb(176, 196, 222);
+	border-width: 0px;
+	border-style: ridge;
+	
+}
+.Calendar
+{
+	font-size: 8pt;
+	cursor: default;
+	background-color: Window;
+	color: Black;
+	font-family: Verdana, Arial;
+	position: relative;
+	display: none;
+	font:    8pt Verdana, Arial;
+	border-color: #fff #000 #000 #fff;
+	
+}
+.Calendar TABLE
+{
+	border-style: solid;
+	border-width: 1px;
+	font-size: 8pt;
+	cursor: default;
+	background-color: White;
+	color: Black;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	border-bottom-color: #4682B4;
+	border-top-color: #4682B4;
+	border-right-color: #4682B4;
+	border-left-color: #4682B4;
+	border-color: #4682B4;
+	
+}
+.Calendar TABLE .wn
+{
+	padding-top: 2px;
+	padding-right: 3px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px 3px 2px 2px;
+	border-right: 1px solid rgb(31, 76, 135);
+	background-color: rgb(219, 236, 252);
+	color: ButtonText;
+	
+}
+.Calendar .CalendarButton
+{
+	text-align: center;
+	border-width: 1px;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	padding: 1px;
+	border-style: solid;
+	border-top-color: #DBECFC;
+	border-right-color: #4682B4;
+	border-bottom-color: #4682B4;
+	border-left-color: #DBECFC;
+	background-color: #DBECFC;
+	color: Black;
+	border-color: #DBECFC #4682B4 #4682B4 #DBECFC;
+	font-size: 8pt;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	
+}
+.Calendar .nav
+{
+	background-color: rgb(219, 236, 252);
+	background-image: url(menuarrow.gif);
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+	border-style: outset;
+	border-top: 1;
+	font-size: 8pt;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	
+}
+.Calendar THEAD .name
+{
+	border-bottom: 1px solid rgb(31, 76, 135);
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	text-align: center;
+	background-color: #DBECFC;
+	color: Black;
+	
+}
+.Calendar THEAD .weekend
+{
+	color: #f00;
+	
+}
+.Calendar THEAD .hilite
+{
+	border-style: solid;
+	border-width: 2px;
+	border-top-color: #DBECFC;
+	border-right-color: #4682B4;
+	border-bottom-color: #4682B4;
+	border-left-color: #DBECFC;
+	border-color: #DBECFC #4682B4 #4682B4 #DBECFC;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	padding: 0px;
+	
+}
+.Calendar THEAD .active
+{
+	border-width: 1px;
+	padding-top: 2px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 2px;
+	padding: 2px 0px 0px 2px;
+	border-top-color: #DBECFC;
+	border-right-color: #4682B4;
+	border-bottom-color: #4682B4;
+	border-left-color: #DBECFC;
+	border-color: #DBECFC #4682B4 #4682B4 #DBECFC;
+	background-color: Gainsboro;
+	border-style: outset;
+	
+}
+.Calendar THEAD .CalendarTitle
+{
+	font-weight: bold;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	padding: 1px;
+	border-width: 1px;
+	border-style: solid;
+	border-top-color: #000;
+	border-right-color: #000;
+	border-bottom-color: #000;
+	border-left-color: #000;
+	border-color: #000;
+	background-color: rgb(31, 76, 135);
+	color: CaptionText;
+	text-align: center;
+	
+}
+.Calendar TBODY
+{
+	font-size: 8pt;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	
+}
+.Calendar TBODY .day
+{
+	width: 2em;
+	text-align: center;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	vertical-align: middle;
+	color: #000000;
+	
+}
+.Calendar TBODY .rowhilite TD
+{
+	background-color: rgb(70, 130, 180);
+	color: White;
+	
+}
+.Calendar TBODY .emptyrow
+{
+	display: none;
+	
+}
+.Calendar TBODY .emptycell
+{
+	visibility: hidden;
+	
+}
+.Calendar TBODY td.hilite
+{
+	padding-top: 1px;
+	padding-right: 3px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	padding: 1px 3px 1px 1px;
+	background-color: rgb(31, 76, 135);
+	color: #FFFFFF;
+	border-color: #fff #000;
+	
+}
+.Calendar TBODY td.active
+{
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	border-style: solid;
+	border-width: 1px;
+	border-top-color: ButtonShadow;
+	border-right-color: ButtonHighlight;
+	border-bottom-color: ButtonHighlight;
+	border-left-color: ButtonShadow;
+	border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
+	background-color: rgb(31, 76, 135);
+	color: #FFFFFF;
+	text-align: center;
+	vertical-align: middle;
+	
+}
+.Calendar TBODY td.selected
+{
+	font-weight: bold;
+	border-width: 1px;
+	border-style: solid;
+	border-top-color: ButtonShadow;
+	border-right-color: ButtonHighlight;
+	border-bottom-color: ButtonHighlight;
+	border-left-color: ButtonShadow;
+	border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	background-color: Gainsboro;
+	color: ButtonText;
+	vertical-align: middle;
+	
+}
+.Calendar TBODY td.weekend
+{
+	color: #f00;
+	
+}
+.Calendar TBODY td.today
+{
+	font-weight: bold;
+	color: rgb(31, 76, 135);
+	
+}
+.Calendar TBODY td.disabled
+{
+	color: GrayText;
+	
+}
+.Calendar TFOOT .ttip
+{
+	background-color: #DBECFC;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	padding: 1px;
+	color: ButtonText;
+	text-align: center;
+	border-top: 1px solid #4682B4;
+	border-color: ButtonShadow ButtonHighlight ButtonHighlight ButtonShadow;
+	
+}
+.Calendar TFOOT .hilite
+{
+	border-style: solid;
+	border-width: 1px;
+	border-top-color: #DBECFC;
+	border-right-color: #4682B4;
+	border-bottom-color: #4682B4;
+	border-left-color: #DBECFC;
+	border-color: #DBECFC #4682B4 #4682B4 #DBECFC;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	background-color: Gainsboro;
+	
+}
+.Calendar TFOOT .active
+{
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	border-width: 1px;
+	border-style: solid;
+	border-top-color: #DBECFC;
+	border-right-color: #4682B4;
+	border-bottom-color: #4682B4;
+	border-left-color: #DBECFC;
+	border-color: #DBECFC #4682B4 #4682B4 #DBECFC;
+	
+}
+.Calendar td.time
+{
+	border-top: 1px solid rgb(31, 76, 135);
+	padding-top: 1px;
+	padding-right: 0px;
+	padding-bottom: 1px;
+	padding-left: 0px;
+	padding: 1px 0px;
+	text-align: center;
+	background-color: #DBECFC;
+	
+}
+.Calendar td.time .hour
+{
+	padding-top: 0px;
+	padding-right: 2px;
+	padding-bottom: 4px;
+	padding-left: 2px;
+	padding: 0px 2px 4px;
+	font-weight: bold;
+	border-color: #889;
+	
+}
+.Calendar td.time .minute
+{
+	padding-top: 0px;
+	padding-right: 2px;
+	padding-bottom: 4px;
+	padding-left: 2px;
+	padding: 0px 2px 4px;
+	font-weight: bold;
+	border-color: #889;
+	
+}
+.Calendar td.time .ampm
+{
+	padding-top: 0px;
+	padding-right: 3px;
+	padding-bottom: 4px;
+	padding-left: 3px;
+	padding: 0px 3px 4px;
+	font-weight: bold;
+	text-align: left;
+	border-color: #889;
+	
+}
+.Calendar td.time span.hilite
+{
+	border-top-color: #000;
+	border-right-color: #000;
+	border-bottom-color: #000;
+	border-left-color: #000;
+	border-color: #000;
+	background-color: rgb(31, 76, 135);
+	color: White;
+	
+}
+.Calendar td.time span.active
+{
+	border-top-color: #f00;
+	border-right-color: #f00;
+	border-bottom-color: #f00;
+	border-left-color: #f00;
+	border-color: #f00;
+	background-color: rgb(31, 76, 135);
+	color: Gold;
+	
+}
+.Calendar td.time .colon
+{
+	padding-top: 0px;
+	padding-right: 2px;
+	padding-bottom: 0px;
+	padding-left: 3px;
+	padding: 0px 2px 0px 3px;
+	font-weight: bold;
+	
+}
+.CalendarCombo
+{
+	position: absolute;
+	width: 4em;
+	top: 0px;
+	left: 0px;
+	cursor: default;
+	border-width: 1px;
+	border-style: solid;
+	border-top-color: #DBECFC;
+	border-right-color: #4682B4;
+	border-bottom-color: #4682B4;
+	border-left-color: #DBECFC;
+	border-color: #DBECFC #4682B4 #4682B4 #DBECFC;
+	background-color: rgb(219, 236, 252);
+	color: Black;
+	font-size: 8pt;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	display: none;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	
+}
+.CalendarCombo .label
+{
+	text-align: center;
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	padding: 1px;
+	font-size: 8pt;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	
+}
+.CalendarCombo .label-IEfix
+{
+	padding-top: 1px;
+	padding-right: 1px;
+	padding-bottom: 1px;
+	padding-left: 1px;
+	padding: 1px;
+	text-align: center;
+	width: 4em;
+	font-size: 8pt;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	
+}
+.CalendarCombo .active
+{
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	border-width: 1px;
+	border-style: outset;
+	border-top-color: rgb(31, 76, 135);
+	border-right-color: rgb(31, 76, 135);
+	border-bottom-color: rgb(31, 76, 135);
+	border-left-color: rgb(31, 76, 135);
+	border-color: rgb(31, 76, 135);
+	font-size: 8pt;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	
+}
+.CalendarCombo .hilite
+{
+	background-color: rgb(31, 76, 135);
+	color: White;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 2px;
+	padding: 2px;
+	font-size: 8pt;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	
+}
+div.suggestions
+{
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border-style: solid;
+	border-width: 1px;
+	position: absolute;
+	border-top-color: black;
+	border-right-color: black;
+	border-bottom-color: black;
+	border-left-color: black;
+	border-color: black;
+	background-color: white;
+	font-size: 8pt;
+	font-family: Verdana, Arial;
+	font:    8pt Verdana, Arial;
+	
+}
+div.suggestions div
+{
+	cursor: default;
+	padding-top: 0px;
+	padding-right: 3px;
+	padding-bottom: 0px;
+	padding-left: 3px;
+	padding: 0px 3px;
+	
+}
+div.suggestions div.current
+{
+	background-color: rgb(31, 76, 135);
+	color: white;
+	
+}
