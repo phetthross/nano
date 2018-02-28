@@ -24,17 +24,17 @@ class marcas extends CI_Controller
 			'edit'				=>	FALSE,
 			'delete'			=>	FALSE,		
 			'custom'=>array(	
-				'EDITAR'=>array(
+				'Editar'=>array(
 					'method' => 'editform',
 					'icon'	 => 'fa fa-pencil-square-o fa-lg',					
 					),				
-				'ELIMINAR'=>array(
+				'Eliminar'=>array(
 					'method' => 'delete',
 					'icon'	 => 'fa fa-trash fa-lg',
 					),
 				)		
 			);
-		$data['plural_name'] = 'Marcas';
+		$data['plural_name'] = 'Mantenedores / Marcas';
 		$data['class_name'] = $this->class_name;
 		$data['table'] = $this->marcas_model->get_marcas();
 		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('ID','NOMBRE', 'DESCRIPCIÓN'), $table_options );

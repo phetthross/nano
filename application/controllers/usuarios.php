@@ -24,17 +24,17 @@ class Usuarios extends CI_Controller
 			'edit'				=>	FALSE,
 			'delete'			=>	FALSE,		
 			'custom'=>array(	
-				'EDITAR'=>array(
+				'Editar'=>array(
 					'method' => 'editform',
 					'icon'	 => 'fa fa-pencil-square-o fa-lg',					
 					),				
-				'ELIMINAR'=>array(
+				'Eliminar'=>array(
 					'method' => 'delete',
 					'icon'	 => 'fa fa-trash fa-lg',
 					),
 				)		
 			);
-		$data['plural_name'] = 'Usuarios';
+		$data['plural_name'] = 'Mantenedores / Usuarios';
 		$data['class_name'] = $this->class_name;
 		$data['table'] = $this->usuarios_model->get_usuarios();
 		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('ID','NOMBRE','PATERNO','MATERNO','USERNAME', 'CORREO', 'TELEFONO', 'CELULAR', 'PERFIL'), $table_options );

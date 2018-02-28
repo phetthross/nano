@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Bodegas extends CI_Controller
+class Compras extends CI_Controller
 {
 	public $class_name = 'bodegas';
 	public $view_name = 'generic_view';
@@ -34,7 +34,7 @@ class Bodegas extends CI_Controller
 					),
 				)		
 			);
-		$data['plural_name'] = 'Mantenedores / Bodegas';
+		$data['plural_name'] = 'Compras';
 		$data['class_name'] = $this->class_name;
 		$data['table'] = $this->bodegas_model->get_bodegas();
 		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('ID','DESCRIPCIÓN','DIRECCIÓN','TELEFONO', 'CORREO'), $table_options );

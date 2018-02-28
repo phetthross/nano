@@ -26,7 +26,7 @@ class Recetas_model extends CI_Model
 	}
 	public function get_dropdown_productos()
 	{
-		return $this->db->query('select id, descripcion from m_insumos')->result_array();
+		return $this->db->query('select i.id, CONCAT(i.descripcion," (",um.descripcion,")") descripcion from m_insumos i inner join M_UnidadMedida um on um.id = i.idUnidadMedida')->result_array();
 	}
 	public function get_nombre_receta($id)
 	{
@@ -34,7 +34,7 @@ class Recetas_model extends CI_Model
 	}
 	public function get_detalle_recetas($id)
 	{
-		return $this->db->query("SELECT d.id, i.descripcion, d.cantidad FROM  m_recetadetalle d inner join m_recetacabecera c on d.idRecetaCabecera = c.id inner join m_insumos i on i.id = d.idInsumo where idRecetaCabecera = {$id}")->result_array();
+		return $this->db->query("SELECT d.id, i.descripcion, um.descripcion um, d.cantidad FROM  m_recetadetalle d inner join m_recetacabecera c on d.idRecetaCabecera = c.id inner join m_insumos i on i.id = d.idInsumo inner join M_unidadmedida um on um.id = i.idUnidadMedida where idRecetaCabecera = {$id}")->result_array();
 	}
 	public function get_detalle_receta( $id )
 	{

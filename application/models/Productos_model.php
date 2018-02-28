@@ -15,14 +15,17 @@ class Productos_model extends CI_Model
 			"
 			select
 				insumo.id as id
-				,insumo.descripcion as insumo	
+				,insumo.descripcion as insumo
+				,um.sigla	
 			    ,marca.id AS marca
+			    ,um.id idUnidadMedida
 				,categoria.id as categoria
 			    ,bodega.id AS bodega
 			from M_Insumos insumo
 			inner join M_Marcas marca on marca.id = insumo.idMarca
 			inner join M_Bodegas bodega on bodega.id = insumo.idBodega
 			inner join M_CategoriaInsumos categoria on categoria.id = insumo.idCategoriaInsumo
+			inner join M_UnidadMedida um on um.id = insumo.idUnidadMedida
 			where insumo.id = {$id}
 			"
 			)->row();
@@ -34,11 +37,13 @@ class Productos_model extends CI_Model
 				insumo.id as id
 				,insumo.descripcion as insumo	
 				,categoria.descripcion as categoria
+				,um.sigla	
 			    ,marca.descripcion AS marca
 			    ,bodega.descripcion AS bodega
 			from M_Insumos insumo
 			inner join M_Marcas marca on marca.id = insumo.idMarca
 			inner join M_Bodegas bodega on bodega.id = insumo.idBodega
+			inner join M_UnidadMedida um on um.id = insumo.idUnidadMedida
 			inner join M_CategoriaInsumos categoria on categoria.id = insumo.idCategoriaInsumo
 				")->result_array();
 		$index = -1;
@@ -49,6 +54,12 @@ class Productos_model extends CI_Model
 	{
 		return $this->db->query("
 			select id, descripcion from M_CategoriaInsumos
+		")->result_array();
+	}
+	function dropdown_unidad_medida()
+	{
+		return $this->db->query("
+			select id, descripcion from M_UnidadMedida
 		")->result_array();
 	}
 	function dropdown_marca()

@@ -24,17 +24,17 @@ class tipoproducto extends CI_Controller
 			'edit'				=>	FALSE,
 			'delete'			=>	FALSE,		
 			'custom'=>array(	
-				'EDITAR'=>array(
+				'Editar'=>array(
 					'method' => 'editform',
 					'icon'	 => 'fa fa-pencil-square-o fa-lg',					
 					),				
-				'ELIMINAR'=>array(
+				'Eliminar'=>array(
 					'method' => 'delete',
 					'icon'	 => 'fa fa-trash fa-lg',
 					),
 				)		
 			);
-		$data['plural_name'] = 'Categorías de Productos';
+		$data['plural_name'] = 'Mantenedores / Categorías de Productos';
 		$data['class_name'] = $this->class_name;
 		$data['table'] = $this->tipoproducto_model->get_categorias();
 		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('ID','DESCRIPCIÓN'), $table_options );
