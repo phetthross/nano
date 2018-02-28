@@ -30,7 +30,7 @@
 	<script src="<?php echo base_url("assets/bootstrap/js/bootstrap.min.js"); ?>"></script>
     <script src="<?php echo base_url("assets/bootstrap/js/jquery.metisMenu.js"); ?>"></script>
     <script src="<?php echo base_url("assets/bootstrap/js/jquery.slimscroll.min.js"); ?>"></script>
-
+    <script src="<?php echo base_url("assets/bootstrap/js/es.js"); ?>"></script>
     <script src="<?php echo base_url("assets/bootstrap/js/inspinia.js"); ?>"> </script>
 	
     <script src="<?php echo base_url("assets/bootstrap/js/pace.min.js"); ?>"></script>

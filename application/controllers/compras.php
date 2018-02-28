@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Compras extends CI_Controller
 {
-	public $class_name = 'bodegas';
+	public $class_name = 'compras';
 	public $view_name = 'generic_view';
 	
 	function __construct()
@@ -13,7 +13,9 @@ class Compras extends CI_Controller
 		$this->load->model('access_control_model');	
 		$this->load->model('Standard_model');			
 		//$this->Login_model->access_control();
-		$this->load->model('bodegas_model');			
+		$this->load->model('bodegas_model');	
+		$this->load->model('compras_model');		
+		$this->load->model('Recetas_model');
 	}
 	public function index()
 	{
@@ -22,11 +24,12 @@ class Compras extends CI_Controller
 			'model'				=>	$this->class_name,	
 			'id_table'  		=>  'table',
 			'edit'				=>	FALSE,
+			'invisible_columns'	=>	array('id'),
 			'delete'			=>	FALSE,		
 			'custom'=>array(	
-				'Editar'=>array(
-					'method' => 'editform',
-					'icon'	 => 'fa fa-pencil-square-o fa-lg',					
+				'Ver Detalle'=>array(
+					'method' => 'view',
+					'icon'	 => 'fa fa-eye fa-lg',					
 					),				
 				'Eliminar'=>array(
 					'method' => 'delete',
@@ -35,49 +38,79 @@ class Compras extends CI_Controller
 				)		
 			);
 		$data['plural_name'] = 'Compras';
+		$data['new_button'] = 'Registrar Compra';
 		$data['class_name'] = $this->class_name;
-		$data['table'] = $this->bodegas_model->get_bodegas();
-		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('ID','DESCRIPCIÓN','DIRECCIÓN','TELEFONO', 'CORREO'), $table_options );
+		$data['table'] = $this->compras_model->get_compras();
+		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('ID','PRODUCTO/INSUMO','CANTIDAD','PRECIO', 'TOTAL'), $table_options );
 		$this->Standard_model->render_view($this->view_name.'/index',$data);
 	}
 
 	public function addform()
 	{
 		$form = array(
+			'idProveedor'	=>	array(
+					'type'			=>	'dropdownAutoComplete',
+					'placeholder'	=>	'Seleccione...',
+					'label'			=>	'*Proveedor:',				
+					'visible_column'=>	'descripcion',
+					'post_name'		=>	'idProveedor',				
+					'data'			=>	$this->compras_model->dropdown_proveedor()
+				),	
 			'descripcion'	=>	array(
-					'type'			=>	'input',			
-					'maxlength'		=>	200,
+					'type'			=>	'date',			
+					'maxlength'		=>	11,
 					'required'		=>	'TRUE', 
-					'placeholder'	=>	'Max. 200',
-					'label'			=>	'Descripción:'
+					'placeholder'	=>	'YYYY-MM-DD',
+					'label'			=>	'*Fecha de Compra:'
 				),
-			'direccion'	=>	array(
-					'type'			=>	'input',			
-					'maxlength'		=>	200,
+			'observaciones'	=>	array(
+					'type'			=>	'textarea',			
+					'maxlength'		=>	250,
 					'required'		=>	'TRUE', 
-					'placeholder'	=>	'Max. 200',
-					'label'			=>	'Dirección:'
-				),
-			'telefono'	=>	array(
-					'type'			=>	'input',			
-					'maxlength'		=>	15,
-					'required'		=>	'TRUE', 
-					'placeholder'	=>	'Max. 15',
-					'label'			=>	'Telefono:'
-				),				
-			'correo'	=>	array(
-					'type'			=>	'input',			
-					'maxlength'		=>	200,
-					'required'		=>	'TRUE', 
-					'placeholder'	=>	'Max. 50',
-					'label'			=>	'Correo:'
-				),			
+					'rows'			=>	4,
+					'placeholder'	=>	'Max. 250',
+					'label'			=>	'Observaciones:'
+				),		
 		);
+		$dinamic_add = array(
+				'id_table' => 'dinamic_table',
+				'add_buttom_text' => 'añadir Producto/Insumo',
+				'del_buttom_text' => 'Eliminar',
+				'columns' => array(
+					'idInsumo'	=>	array(
+						'name'	=>	'idInsumo',					
+						'type'	=>	'DropdownAutocomplete',
+						'data'	=>	$this->Standard_model->generateDropdownAutoCompleteForJs($this->Recetas_model->get_dropdown_productos(), "*Seleccione Insumo", "descripcion", "idInsumo", NULL, TRUE,  'owo')
+					),
+					'cantidad'	=>	array(
+						'type'			=>	'text',			
+						'maxlength'		=>	3,
+						'name'			=>	'cantidad',
+						'required'		=>	'TRUE', 
+						'placeholder'	=>	'*Cantidad',
+					),	
+					'descuento'	=>	array(
+						'type'			=>	'text',			
+						'maxlength'		=>	3,
+						'name'			=>	'descuento',
+						'required'		=>	'TRUE', 
+						'placeholder'	=>	'*% / $ Descuento',
+					),	
+					'total'	=>	array(
+						'type'			=>	'text',			
+						'maxlength'		=>	3,
+						'name'			=>	'total',
+						'required'		=>	'TRUE', 
+						'placeholder'	=>	'*Total (SIN IVA)',
+					),			
+				)
+			);
+		$data['dinamic'] = $this->Standard_model->dinamicAdd($dinamic_add,'owo');
 		$data['class_name'] = $this->class_name;
 		$data['method_name'] = "recordadd";
-		$data['tittle'] = "Nueva Bodega";
-		$data['plural_name'] = 'Bodegas / Nueva Bodega';
-		$data['form'] = $this->Standard_model->renderForm( $form );
+		$data['tittle'] = "Nueva Compra";
+		$data['plural_name'] = 'Compras / Nueva Compra';
+		$data['form'] = $this->Standard_model->renderForm( $form, FALSE );
 		$this->Standard_model->render_view($this->view_name.'/add',$data);
 	}
 	public function delete( $id=NULL )
@@ -106,8 +139,54 @@ class Compras extends CI_Controller
 	{
 		if (isset($_POST) AND count($_POST) > 0 )
 		{
-			//print_r($_POST);
-			//exit(0);
+			$detalle = array();	
+			foreach ($_POST as $key => $elements)
+			{
+				if( strpos($key, '|') != FALSE )
+				{
+					$row = explode('|', $key);
+					$detalle[$row[0]][$row[1]] = $elements;
+				}
+			}
+			$index = 0;
+			$errors = 0;
+			foreach ($detalle as $key => $value)
+			{
+				$index++;
+				$temp_descuento = "";
+				if( strpos($value['descuento'], '%') != FALSE OR strpos($value['descuento'], ',') != FALSE OR strpos($value['descuento'], '.') != FALSE)
+				{
+					$temp_descuento = str_replace(array('%',',','.'), '', $value['descuento']);
+					echo $temp_descuento;
+					if( is_numeric($temp_descuento) )
+					{
+						$detalle[$index]['bruto']	= $value['total'] - round( $value['total'] * ($temp_descuento / 100) );
+					}
+					else
+					{
+						$detalle[$index]['bruto']	= $value['total'];
+						$errors++;
+					}
+				}
+				else
+				{
+					if( is_integer($temp_descuento) and $temp_descuento < $value['total'] )
+					{
+						$detalle[$index]['bruto']	= $value['total'] - $temp_descuento;
+					}
+					else
+					{
+						$detalle[$index]['bruto']	= $value['total'];
+						$errors++;
+					}
+				}				
+				$detalle[$index]['iva']		= round($detalle[$index]['bruto'] * 0.19);
+				$detalle[$index]['neto']	= $detalle[$index]['iva'] + $detalle[$index]['bruto'];
+				isset($temp_descuento);
+				
+			}
+			print_r($detalle);
+			exit(0);
 			//validar que el dato no exista
 			$conditions = array( 'descripcion'=>$this->input->post('descripcion') );
 			$exist_data = $this->Standard_model->exist_data( 'M_bodegas', $conditions);

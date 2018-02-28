@@ -1,4 +1,9 @@
-		<div class="row">
+<style>
+  textarea {
+    resize: none;
+  }
+</style>		
+    <div class="row">
 			<div class="col-md-8 col-md-offset-2">
 				<div class="ibox float-e-margins">
                     <div class="ibox-title">

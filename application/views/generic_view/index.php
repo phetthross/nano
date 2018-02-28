@@ -19,8 +19,8 @@
     <!-- /.col-lg-6 -->
    
     <div class="col-xs-5 col-md-2" align="right">
-    
-		<br><a href="<?php if(isset($addform)){echo site_url($class_name."/".$addform);}else{echo site_url($class_name."/addform");}   ?>"> <button type="button" class="btn btn-success btn-md btn-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</button></a><br>
+    <?php if(!isset($new_button)){$new_button='Nuevo';}?>
+		<br><a href="<?php if(isset($addform)){echo site_url($class_name."/".$addform);}else{echo site_url($class_name."/addform");}   ?>"> <button type="button" class="btn btn-success btn-md btn-block"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?php echo $new_button; ?></button></a><br>
    
     </div>
     <?php } else { ?>
