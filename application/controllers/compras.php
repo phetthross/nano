@@ -31,17 +31,13 @@ class Compras extends CI_Controller
 					'method' => 'view',
 					'icon'	 => 'fa fa-eye fa-lg',					
 					),				
-				'Eliminar'=>array(
-					'method' => 'delete',
-					'icon'	 => 'fa fa-trash fa-lg',
-					),
 				)		
 			);
 		$data['plural_name'] = 'Registro de Compras';
 		$data['new_button'] = 'Registrar Compra';
 		$data['class_name'] = $this->class_name;
 		$data['table'] = $this->compras_model->get_compras();
-		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('PRODUCTO/INSUMO','CANTIDAD','$ TOTAL'), $table_options );
+		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('PRODUCTO/INSUMO','CANTIDAD','$ TOTAL', '$ PMP'), $table_options );
 		$this->Standard_model->render_view($this->view_name.'/index',$data);
 	}
 
