@@ -1249,7 +1249,15 @@ class Standard_model extends CI_Model
 								
 			}
 			if ( $options['type'] == 'text' )
-			{			
+			{		
+				if (array_key_exists('value', $options))
+				{
+					$input_value = $options['value'];
+				}
+				else
+				{
+					$input_value = '';
+				}	
 				if (array_key_exists('required', $options))
 				{
 					if ($options['required'] == TRUE)
@@ -1267,13 +1275,13 @@ class Standard_model extends CI_Model
 				}
 				if (array_key_exists('placeholder', $options))
 				{
-					$table .= "<input type=\"text\" ".$required." class=\"form-control\" placeholder=\"".$options['placeholder']."\" id =\"'+".$js_value."+'|".$options['name']."\" name =\"'+".$js_value."+'|".$options['name']."\"  class=\"fname\" />";
+					$table .= "<input type=\"text\" ".$required." value=\"{$input_value}\" class=\"form-control\" placeholder=\"".$options['placeholder']."\" id =\"'+".$js_value."+'|".$options['name']."\" name =\"'+".$js_value."+'|".$options['name']."\"  class=\"fname\" />";
 					$code_bar .= "<input type=\"text\" ".$required." class=\"form-control\" placeholder=\"".$options['placeholder']."\" id =\"'+".$js_value."+'|".$options['name']."\" name =\"'+".$js_value."+'|".$options['name']."\"  class=\"fname\" />";
 				}
 				else
 				{
-					$table .= "<input type=\"text\" ".$required." class=\"form-control\" id =\"'+".$js_value."+'|".$options['name']."\" name =\"'+".$js_value."+'|".$options['name']."\"  class=\"fname\" />";
-					$code_bar .= "<input type=\"text\" ".$required." class=\"form-control\" id =\"'+".$js_value."+'|".$options['name']."\" name =\"'+".$js_value."+'|".$options['name']."\"  class=\"fname\" />";
+					$table .= "<input type=\"text\" ".$required." class=\"form-control\" value=\"{$input_value}\" id =\"'+".$js_value."+'|".$options['name']."\" name =\"'+".$js_value."+'|".$options['name']."\"  class=\"fname\" />";
+					$code_bar .= "<input type=\"text\" ".$required." value=\"{$input_value}\" class=\"form-control\" id =\"'+".$js_value."+'|".$options['name']."\" name =\"'+".$js_value."+'|".$options['name']."\"  class=\"fname\" />";
 				}
 				
 			}

@@ -37,11 +37,11 @@ class Compras extends CI_Controller
 					),
 				)		
 			);
-		$data['plural_name'] = 'Compras';
+		$data['plural_name'] = 'Registro de Compras';
 		$data['new_button'] = 'Registrar Compra';
 		$data['class_name'] = $this->class_name;
 		$data['table'] = $this->compras_model->get_compras();
-		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('ID','PRODUCTO/INSUMO','CANTIDAD','PRECIO', 'TOTAL'), $table_options );
+		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('PRODUCTO/INSUMO','CANTIDAD','$ TOTAL'), $table_options );
 		$this->Standard_model->render_view($this->view_name.'/index',$data);
 	}
 
@@ -53,20 +53,26 @@ class Compras extends CI_Controller
 					'placeholder'	=>	'Seleccione...',
 					'label'			=>	'*Proveedor:',				
 					'visible_column'=>	'descripcion',
-					'post_name'		=>	'idProveedor',				
+					'post_name'		=>	'idProveedor',			
+					'required'		=>	'TRUE',	
 					'data'			=>	$this->compras_model->dropdown_proveedor()
 				),	
-			'descripcion'	=>	array(
+			'fechaCompra'	=>	array(
 					'type'			=>	'date',			
 					'maxlength'		=>	11,
 					'required'		=>	'TRUE', 
 					'placeholder'	=>	'YYYY-MM-DD',
 					'label'			=>	'*Fecha de Compra:'
 				),
+			'ncompra'	=>	array(
+					'type'			=>	'input',			
+					'maxlength'		=>	30,
+					'placeholder'	=>	'Max. 30',
+					'label'			=>	'Número de Boleta/Factura:'
+				),
 			'observaciones'	=>	array(
 					'type'			=>	'textarea',			
 					'maxlength'		=>	250,
-					'required'		=>	'TRUE', 
 					'rows'			=>	4,
 					'placeholder'	=>	'Max. 250',
 					'label'			=>	'Observaciones:'
@@ -93,7 +99,6 @@ class Compras extends CI_Controller
 						'type'			=>	'text',			
 						'maxlength'		=>	3,
 						'name'			=>	'descuento',
-						'required'		=>	'TRUE', 
 						'placeholder'	=>	'*% / $ Descuento',
 					),	
 					'total'	=>	array(
@@ -139,90 +144,21 @@ class Compras extends CI_Controller
 	{
 		if (isset($_POST) AND count($_POST) > 0 )
 		{
-			$detalle = array();	
-			foreach ($_POST as $key => $elements)
-			{
-				if( strpos($key, '|') != FALSE )
-				{
-					$row = explode('|', $key);
-					$detalle[$row[0]][$row[1]] = $elements;
-				}
-			}
-			$index = 0;
-			$errors = 0;
-			foreach ($detalle as $key => $value)
-			{
-				$index++;
-				$temp_descuento = "";
-				if( strpos($value['descuento'], '%') != FALSE OR strpos($value['descuento'], ',') != FALSE OR strpos($value['descuento'], '.') != FALSE)
-				{
-					$temp_descuento = str_replace(array('%',',','.'), '', $value['descuento']);
-					echo $temp_descuento;
-					if( is_numeric($temp_descuento) )
-					{
-						$detalle[$index]['bruto']	= $value['total'] - round( $value['total'] * ($temp_descuento / 100) );
-					}
-					else
-					{
-						$detalle[$index]['bruto']	= $value['total'];
-						$errors++;
-					}
-				}
-				else
-				{
-					if( is_integer($temp_descuento) and $temp_descuento < $value['total'] )
-					{
-						$detalle[$index]['bruto']	= $value['total'] - $temp_descuento;
-					}
-					else
-					{
-						$detalle[$index]['bruto']	= $value['total'];
-						$errors++;
-					}
-				}				
-				$detalle[$index]['iva']		= round($detalle[$index]['bruto'] * 0.19);
-				$detalle[$index]['neto']	= $detalle[$index]['iva'] + $detalle[$index]['bruto'];
-				isset($temp_descuento);
-				
-			}
-			print_r($detalle);
-			exit(0);
-			//validar que el dato no exista
-			$conditions = array( 'descripcion'=>$this->input->post('descripcion') );
-			$exist_data = $this->Standard_model->exist_data( 'M_bodegas', $conditions);
-			if( $exist_data === TRUE )
-			{
-				$params = array( 
-					"descripcion"		=> $this->input->post("descripcion"),
-					"direccion"	=> $this->input->post("direccion"),
-					"telefono"			=> $this->input->post("telefono"),
-					"correo"			=> $this->input->post("correo"),
-				);
-				$this->Standard_model->add_data( 'M_Bodegas', $params );
-				$mesagge = array(
+			$this->compras_model->ingresar_compra();
+			//------Mensaje de Exito
+			$mesagge = array(
 						"type"=>"success",
 						"tittle"=>"Registro Ingresado.",
 						"message"=>"La bodega se ha ingresado a la base de datos.",
 						"positionClass" => "toast-top-center"
 					);
-				$this->session->set_flashdata("message", $mesagge );	
-			}
-			else
-			{
-				$mesagge = array(
-						"type"=>"warning",
-						"tittle"=>"Error al agregar el registro.",
-						"message"=>"La bodega que intentas ingresar ya se encuentra en la base de datos.",
-						"positionClass" => "toast-top-center"
-					);
-				$this->session->set_flashdata("error_form", $mesagge );
-				redirect($this->class_name.'/addform', 'refresh');			
-			}
-			
-			redirect($this->class_name, 'refresh');
+			$this->session->set_flashdata("message", $mesagge );
+			redirect($this->class_name, 'refresh');		
+			//------	
 		}	
 		else
 		{
+			//------Mensaje accseso no permitido
 			$mesagge = array(
 						"type"=>"warning",
 						"tittle"=>"Error de Acceso.",
@@ -230,7 +166,8 @@ class Compras extends CI_Controller
 						"positionClass" => "toast-top-full-width"
 					);
 			$this->session->set_flashdata("message", $mesagge );
-			redirect($this->class_name, 'refresh');	
+			redirect($this->class_name, 'refresh');
+			//------	
 		}
 	}
 

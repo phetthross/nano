@@ -31,10 +31,11 @@ class Login extends CI_Controller
 		{
 			$username =  $this->input->post('username');
 			$password =  $this->input->post('password');
-			$response = $this->db->query("select  * from M_Usuarios u inner join M_TipoUsuarios tp on tp.id = idTipoUsuario where username = '{$username}' or correo = '{$username}' ")->row();
+			$response = $this->db->query("select  u.id, u.rut, u.nombre, u.paterno, u.materno, tp.descripcion, u.password from M_Usuarios u inner join M_TipoUsuarios tp on tp.id = idTipoUsuario where username = '{$username}' or correo = '{$username}' ")->row();
 			if ( count($response) > 0 )
 			{
 				$usuario = array(
+					'id' => $response->id,
 					'rut' => $response->rut,
 					'nombre'	=>	ucwords( $response->nombre ),
 					'paterno'	=>	ucwords( $response->paterno ),
