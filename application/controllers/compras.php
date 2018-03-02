@@ -56,8 +56,8 @@ class Compras extends CI_Controller
 					),				
 				)		
 			);
-		$data['plural_name'] = 'Registro de Compras';
-		$data['new_button'] = 'Registrar Compra';
+		$data['back'] = 'index';
+		$data['plural_name'] = 'index';
 		$data['class_name'] = $this->class_name;
 		$data['table'] = $this->compras_model->get_compra_x_producto( $id );
 		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('FECHA COMPRA','CANTIDAD','$ NETO', '$ IVA', '$ BRUTO'), $table_options );

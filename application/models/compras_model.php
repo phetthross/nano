@@ -192,6 +192,7 @@ class compras_model extends CI_Model
 		foreach ($response as $key => $value)
 		{
 			$index++;
+			$response[$index]['fechaCompra'] = date('d-m-Y',strtotime($value['fechaCompra']));
 			$response[$index]['neto'] = '$'.number_format($value['neto'], 0, '', '.');
 			$response[$index]['iva'] = '$'.number_format($value['iva'], 0, '', '.');
 			$response[$index]['bruto'] = '$'.number_format($value['bruto'], 0, '', '.');
