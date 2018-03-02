@@ -40,7 +40,29 @@ class Compras extends CI_Controller
 		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('PRODUCTO/INSUMO','CANTIDAD','$ TOTAL', '$ PMP'), $table_options );
 		$this->Standard_model->render_view($this->view_name.'/index',$data);
 	}
-
+	public function view($id=NULL)
+	{
+		$table_options = array(
+			'id'				=>	'id',
+			'model'				=>	$this->class_name,	
+			'id_table'  		=>  'table',
+			'edit'				=>	FALSE,
+			'invisible_columns'	=>	array('id'),
+			'delete'			=>	FALSE,		
+			'custom'=>array(	
+				'Ver Detalle'=>array(
+					'method' => 'view',
+					'icon'	 => 'fa fa-eye fa-lg',					
+					),				
+				)		
+			);
+		$data['plural_name'] = 'Registro de Compras';
+		$data['new_button'] = 'Registrar Compra';
+		$data['class_name'] = $this->class_name;
+		$data['table'] = $this->compras_model->get_compra_x_producto( $id );
+		$data['table'] = $this->Standard_model->bootstrapTable( $data['table'], array('FECHA COMPRA','CANTIDAD','$ NETO', '$ IVA', '$ BRUTO'), $table_options );
+		$this->Standard_model->render_view($this->view_name.'/index',$data);
+	}
 	public function addform()
 	{
 		$form = array(

@@ -172,6 +172,32 @@ class compras_model extends CI_Model
 			//------Registro de PMP
 			//---
 	}
+	function get_compra_x_producto($idInsumo)
+	{
+		$response = $this->db->query("
+			select
+				dm.id 
+				,cm.fechaCompra
+				,dm.cantidad 
+				,dm.neto
+				,dm.iva
+				,dm.bruto
+			from t_cabeceramovimiento cm
+			inner join t_detallemovimiento dm on dm.idCabecera = cm.id
+			where dm.idProducto = {$idInsumo}
+            and cm.idtipoMovimiento = 1
+            and cm.idEstado = 1
+			")->result_array();
+		$index = -1;
+		foreach ($response as $key => $value)
+		{
+			$index++;
+			$response[$index]['neto'] = '$'.number_format($value['neto'], 0, '', '.');
+			$response[$index]['iva'] = '$'.number_format($value['iva'], 0, '', '.');
+			$response[$index]['bruto'] = '$'.number_format($value['bruto'], 0, '', '.');
+		}
+		return $response;
+	}
 	function get_compras()
 	{
 		$response = $this->db->query(
